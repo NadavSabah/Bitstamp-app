@@ -12,10 +12,8 @@ const reducer = (state = initialState, action) => {
         case 'SET_FIRST_PRICE':
             return { ...state, firstPrice: action.data, currPrice: action.data }
         case 'SET_IS_CLOSE':
-            console.log('this is the action:', action)
             return { ...state, isClose: action.data }
         case 'SET_TABLE_DATA':
-            console.log('this is the action:', action)
             return { ...state, tableData: action.data }
     }
     return state

@@ -5,7 +5,6 @@ import HomePage from './pages/HomePage/HomePage'
 import RestApiPage from './pages/RestApiPage/RestApiPage'
 import NavBar from './components/NavBar/NavBar'
 import { connect } from 'react-redux'
-// import webSocketService from './service/webSocket'
 
 
 
@@ -14,11 +13,10 @@ import { connect } from 'react-redux'
 
 var socket = new WebSocket("wss://ws.bitstamp.net.");
 class App extends React.Component {
-  
+
   componentDidMount() {
 
     socket.onopen = (event) => {
-      console.log('event in the socket ', event)
       socket.send(JSON.stringify({
         "event": "bts:subscribe",
         "data": {
@@ -34,7 +32,6 @@ class App extends React.Component {
         let bid = +res.data.bids[0][0]
         let ask = +res.data.asks[0][0]
         let price = +((bid + ask) / 2).toFixed(2)
-        // console.log('the price is in the app cmp ', price)
         if (!this.props.isClose) {
 
           if (!this.props.currPrice) {
@@ -62,7 +59,6 @@ class App extends React.Component {
         <NavBar></NavBar>
         <Route path="/" exact component={HomePage} />
         <Route path="/RestApi" exact component={RestApiPage} />
-        {/* <Route exact  path="/" component={() => <HomePage myName={this.state.myName} />} /> */}
       </Router>
     )
   }
@@ -80,7 +76,6 @@ const mapDispatchToProps = dispatch => {
       dispatch({ type: 'SET_FIRST_PRICE', data: price })
     },
     setPrice: (price) => {
-      // console.log('the price in the dispatch is ', price)
       dispatch({ type: 'SET_PRICE', data: price })
     }
   }

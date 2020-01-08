@@ -3,7 +3,6 @@ import './RestApiPage.css'
 import { connect } from 'react-redux'
 import restApiSrevice from '../../service/restApi'
 import TableRow from '../../components/TableRow/TableRow'
-import Table from 'react-bootstrap/Table'
 
 
 
@@ -18,23 +17,23 @@ class RestApiPage extends React.Component {
     }
     render() {
         return (
-        <div>
-            {/* <Table striped bordered hover variant="dark"> */}
+            <div>
                 <table className="table-container">
+                    <tbody>
 
-    <tr>
-                    {this.props.tableData && this.state.tHeaders.map((key, index) => {
-                        return <th key={index}>{key.toUpperCase()}</th>
-                    })}
-                    </tr>
-                
-                    {this.props.tableData && this.props.tableData.map((movie) => {
-                        return < TableRow key={movie.id} title={movie.title} userId={movie.userId} id={movie.id}  ></TableRow>
-                    })
-                    }
+                        <tr>
+                            {this.props.tableData && this.state.tHeaders.map((key, index) => {
+                                return <th key={index}>{key.toUpperCase()}</th>
+                            })}
+                        </tr>
+
+                        {this.props.tableData && this.props.tableData.map((movie) => {
+                            return < TableRow key={movie.id} title={movie.title} userId={movie.userId} id={movie.id}  ></TableRow>
+                        })
+                        }
+                    </tbody>
                 </table>
-            {/* </Table> */}
-        </div >
+            </div >
         )
     }
 }

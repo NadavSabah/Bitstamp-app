@@ -1,5 +1,4 @@
 import React from 'react'
-import io from 'socket.io-client'
 import { connect } from 'react-redux';
 import './HomePage.css'
 
@@ -19,9 +18,9 @@ class HomePage extends React.Component {
                     <span title='Current Price' className={"price-rate " + (this.props.currPrice >= this.props.prePrice ? 'green' : 'red')}>{this.props.currPrice}</span>
                 </div>
                 <button className='stop-start_btn' onClick={this.toggleButton}>{this.props.isClose ? 'Start' : 'Stop'}</button>
-            <div className="bgc-img">
-               <h1>Bitstamp Exchange</h1>
-            </div>
+                <div className="bgc-img">
+                    <h1>Bitstamp Exchange</h1>
+                </div>
             </div>
         )
     }
